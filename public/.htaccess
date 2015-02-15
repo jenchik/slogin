@@ -1,0 +1,13 @@
+SetEnv SPC_ENV development
+SetEnv SPC_LOG true
+SetEnv SPC_DEBUG_KEY debug
+
+AddDefaultCharset UTF-8
+
+# Mod Rewrite
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]

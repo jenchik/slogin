@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= _('Вход') ?></h3>
+            </div>
+            <div class="panel-body">
+                <ul id="spcTab" class="nav nav-tabs" role="tablist">
+                    <li class="active" role="presentation">
+                        <a id="login-tab" aria-controls="login" data-toggle="tab" role="tab" href="#login"><?= _('Уже есть логин') ?></a>
+                    </li>
+                    <li role="presentation">
+                        <a id="reg-tab" aria-controls="reg" data-toggle="tab" role="tab" href="#reg" aria-expanded="true"><?= _('Регистрация') ?></a>
+                    </li>
+                </ul>
+                <div class="row">&nbsp;</div>
+                <div id="spcTabContent" class="tab-content">
+                    <div id="login" class="tab-pane fade active in" aria-labelledby="login-tab" role="tabpanel">
+                        <?= $this->app->render('views/login-template.phtml'); ?>
+                    </div>
+                    <div id="reg" class="tab-pane fade" aria-labelledby="reg-tab" role="tabpanel">
+                        <?= $this->app->render('views/reg-template.phtml'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tab-content form').find('.btn-default').on('click', function (e) {
+            var form = $(e.target).closest('form');
+            spcForm.startSending();
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: form.serializeArray(),
+                success: function (resp) {
+                    if (resp.redirect) {
+                        console.log('Redirect to: ' + resp.redirect);
+                        window.location.href = resp.redirect;
+                        return;
+                    }
+                    var isError = false;
+                    if (!resp.success) {
+                        isError = true;
+                    }
+                    if (resp.errors) {
+                        spcForm.showErrors(resp.errors);
+                    }
+                    if (resp.message) {
+                        spcNotifie(resp.message, isError);
+                    }
+                    spcLoader.hide();
+                },
+                error: function (jqx) {
+                    spcLoader.hide();
+                    var msg = '';
+                    if (jqx) {
+                        msg = '(' + jqx.status + ') ' + jqx.statusText;
+                    }
+                    spcNotifie(msg, true, true);
+                }
+            });
+            return false;
+        });
+    });
+</script>

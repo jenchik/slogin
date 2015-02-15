@@ -1,0 +1,38 @@
+<form class="form-horizontal" role="form" method="post" action="/reg" autocomplete="off">
+    <input type="text" style="display:none" />
+    <div class="form-group">
+        <label for="sl-name2" class="col-sm-2 control-label"><?= _('Ник') ?></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="sl-name2" name="form-reg[name]" placeholder="Nick">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sl-email2" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="sl-email2" name="form-reg[email]" placeholder="Enter email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sl-login2" class="col-sm-2 control-label"><?= _('Логин') ?></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="sl-login2" name="form-reg[login]" placeholder="Login">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sl-password2" class="col-sm-2 control-label"><?= _('Пароль') ?></label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="sl-password2" name="form-reg[password]" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sl-confirm2" class="col-sm-2 control-label"><?= _('Подтв.') ?></label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="sl-confirm2" name="form-reg[confirm]" placeholder="Password confirm">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default"><?= _('Зарегистрироваться') ?></button>
+        </div>
+    </div>
+</form>

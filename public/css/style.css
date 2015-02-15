@@ -1,0 +1,16 @@
+.spc-dontshow {
+    display: none;
+}
+
+.clear {
+    clear: both;
+}
+
+.errorMessage {
+    color: #a94442;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
