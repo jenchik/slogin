@@ -5,8 +5,11 @@ Required
 --------
 
 1) PHP >= 5.4.0 (better 5.5.*)
+
 2) gettex
+
 3) Turn on short tag
+
 4) chmod 0777 ./logs
 
 
