@@ -23,7 +23,7 @@ So it looks something like this.
 ```php
 <?php
 
-$app['view'] = new \Twig_Environment($twig_loader, $twig_options);
+$app['view'] = new \Twig_Environment(new \Twig_Loader_Filesystem(APP_DIR), $twig_options);
 
 ```
 
