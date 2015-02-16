@@ -21,9 +21,9 @@ class Logger extends AbstractLogger
     public function __construct(Application $app)
     {
         $config = $app['config'];
-        if (!isset($config['logger']['LOG_ENABLE'])) {
+        if (!isset($config['logger']['LOG_ENABLE']) || !$config['logger']['LOG_ENABLE']) {
             // dummy
-            $this['logger'] = new \Psr\Log\NullLogger();
+            $app['logger'] = new \Psr\Log\NullLogger();
             return;
         }
 
