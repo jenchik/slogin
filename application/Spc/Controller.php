@@ -91,6 +91,14 @@ class Controller
             return [];
         });
 
+        $app->match('/order/twig', function ($params) use ($app) {
+            $this->preDispatch($params);
+            $loader = new \Twig_Loader_Filesystem(APP_DIR);
+            $app['view'] = new \Twig_Environment($loader);
+
+            return ['user_id' => $app->getIdentity()];
+        });
+
         $app->match('/reg', [$this, 'registerAction']);
     }
 
