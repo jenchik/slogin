@@ -164,7 +164,7 @@ class Application implements \ArrayAccess
         $layout = $this['layout'];
         if (is_callable($layout)) {
             echo $layout($content);
-            return;
+            return $this;
         }
 
         $params = [
@@ -218,7 +218,7 @@ class Application implements \ArrayAccess
 
         if (!array_key_exists($route, $this->routes)) {
             $this->error(_('Ошибка 404'));
-            return;
+            return $this;
         }
 
         $script = $route;
@@ -231,7 +231,7 @@ class Application implements \ArrayAccess
         if (is_callable($this->routes[$route])) {
             $result = call_user_func($this->routes[$route], $this->params);
             if ($this->isError) {
-                return;
+                return $this;
             }
         } else {
             $result = $this->routes[$route];
@@ -244,7 +244,7 @@ class Application implements \ArrayAccess
                 $output .= $this->render($script, null, $result);
             } else {
                 $this->error(_('Ошибка 404'));
-                return;
+                return $this;
             }
         } else {
             $output .= $result;

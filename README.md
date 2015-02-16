@@ -10,7 +10,9 @@ Required
 
 3) Turn on short tag
 
-4) chmod 0777 ./logs
+4) PostgreSql (installing script [db.sql](https://github.com/jenchik/slogin/blob/master/install/db.sql))
+
+5) chmod 0777 ./logs
 
 
 For use Twig
@@ -32,7 +34,7 @@ And for 'layout'
 
 $twig = new \Twig_Environment($twig_loader, $twig_options);
 $app['layout'] = function ($content) use ($twig) {
-    return $twig->render('script.phtml', ['some_var' => $content);
+    return $twig->render('script.phtml', ['some_var' => $content]);
 };
 
 ```

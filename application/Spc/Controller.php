@@ -54,7 +54,6 @@ class Controller
             unset($_SESSION);
 
             if ($app->isAjax()) {
-                return 'assdfsdfdfdg';
                 $app->jsonResponse(['success' => 1, 'redirect' => '/']);
             }
             $app->redirect('/');
